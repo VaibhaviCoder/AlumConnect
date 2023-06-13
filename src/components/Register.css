@@ -1,0 +1,92 @@
+/* .registercont{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+.signupfirstcont{
+    height: auto;
+    width: 30%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;  
+    background-color: #ffff;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.signupsecondcont{
+    height: 100%;
+    width: 60%;
+    text-align: center;
+    /* background-color: aqua; */
+    /* padding: 1rem 5rem 1rem 2rem;
+} */ */
+
+
+.registercont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .signupfirstcont {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  .small-container {
+    max-width: 600px;
+  }
+  
+  .signupsecondcont h1 {
+    text-align: center;
+    padding-bottom: 2rem;
+    color:seagreen;
+  }
+  
+  .signupsecondcont form {
+    margin-top: 2rem;
+  }
+  
+  .signupsecondcont .mb-3 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .signupsecondcont label {
+    font-weight: bold;
+  }
+  
+  .signupsecondcont .phone input {
+    width: 100%;
+  }
+  
+  .signupsecondcont .pass input {
+    width: 100%;
+  }
+  
+  .signupsecondcont .inline-radio {
+    margin-top: 0.5rem;
+  }
+  
+  .signupsecondcont .my-5 {
+    width: 40%;
+    margin-top: 2rem;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .small-container {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .signupsecondcont .my-5 {
+      width: 100%;
+    }
+  }
+  
