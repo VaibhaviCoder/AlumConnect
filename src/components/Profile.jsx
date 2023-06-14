@@ -11,26 +11,29 @@ const Profile = () => {
         navigate('/');
 
     }
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             if(checkLogin()){
-    //                 const {data} = await axios.get('/api/user/profile', {headers: {
-    //                     authorization: `Bearer ${JSON.parse(localStorage.getItem('userInfo')).token}`}
-    //                 });
-    //                 setUser(data.data.user);
-    //             } else {
-                    
-    //             navigate('/login');
-    //             }
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                if(checkLogin()){
+                    // console.log("toke",localStorage.getItem('userInfo'));
+                    const token=localStorage.getItem('userInfo');
+                    // console.log("its again   " , token);
+                    const {data} = await axios.get('http://localhost:3300/api/v1/alumni/profile', {headers: {
+                        xaccesstoken: token}
+                    });
+                    // console.log(data);
+                    setUser(data.data);
+                } else {   
+                navigate('/login');
+                }
                 
-    //         } catch (err) {
-    //             navigate('/login');
-    //         }
+            } catch (err) {
+                navigate('/login');
+            }
             
-    //     }
-    //     fetchData();
-    // },[navigate]);
+        }
+        fetchData();
+    },[navigate]);
     const checkLogin = () => {
         if(localStorage.getItem('userInfo')){
             return true;
@@ -43,7 +46,7 @@ const Profile = () => {
    
     <Container style={{padding: '60px'}}>
         <div style={{backgroundColor: '#f5f5f5', padding: '20px'}}>
-    {/* {checkLogin() ?  */}
+    {checkLogin() ? 
     <div style={{backgroundColor: '#fff', padding: '20px', borderRadius: '10px'}}>
         <button onClick={logoutHandler} style={{backgroundColor: '#ff69b4', color: '#fff', border: 'none', borderRadius: '5px', padding: '10px'}}>Log Out</button>
         <div className="profilec1" style={{display:"flex"}}>
@@ -52,13 +55,13 @@ const Profile = () => {
             <div className="profilec2" style={{display:"flex",flexDirection:"column"}}>
             <h1 style={{color: '#ff69b4', margin: '20px 0'}}>Name {user.name}</h1>
             <h3 style={{color: '#333', margin: '10px 0'}}>Email :- {user.email}</h3>
-            <h3 style={{color: '#333', margin: '10px 0'}}>Phone :- {user.phone}</h3>
+            <h3 style={{color: '#333', margin: '10px 0'}}>Phone :- {user.phoneNumber}</h3>
             <h3 style={{color: '#333', margin: '10px 0'}}>Branch :- {user.branch}</h3>
-            <h3 style={{color: '#333', margin: '10px 0'}}>Batch :- {user.batch}</h3>
+            <h3 style={{color: '#333', margin: '10px 0'}}>Batch :- {user.graduationYear}</h3>
             </div>
         </div>
     </div> 
-     {/* : null} */}
+      : null} 
     </div>
 </Container>
   )
