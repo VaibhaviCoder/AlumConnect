@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Register.css'
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import axios from 'axios';
 
 function Register() {
   const [email, setEmail] = useState();
@@ -70,10 +71,34 @@ function Register() {
     }
   }
   
-  // async function submithandle(e){
-  //     e.preventDefault();   
-
-  // }
+  async function submithandler(e){
+      e.preventDefault();
+      try {
+        const {data} = await axios.post(
+          "http://localhost:3300/api/v1/alumni/signup",
+          {
+            email:email, 
+            password:password,
+            phoneNumber:phone,
+            name:name,
+            gender:gender,
+            branch:branch,
+            rollNo:rollNo,
+            graduationYear:batch,
+            degreeCertificate:'geresfs',
+            
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+          
+        );
+      } catch (error) {
+        console.log(error);
+      }
+  }
   
 
   return (
@@ -83,7 +108,7 @@ function Register() {
   </div> */}
   <Container className="small-container signupsecondcont">
     <h1 style={{ textAlign: 'center', paddingBottom: '2rem', color: 'blue' }}>SIGN UP</h1>
-    <Form encType="multipart/form-data">
+    <Form encType="multipart/form-data" onSubmit={submithandler}>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email*</Form.Label>
@@ -174,6 +199,13 @@ function Register() {
           <Form.Label>Branch*</Form.Label>
           <Form.Select required onChange={(e) => setBranch(e.target.value)}>
             <option>Select One</option>
+            <option>Information Technology</option>
+            <option>Mechenical Engineering</option>
+            <option>Electrical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Leather Technology</option>
+            <option>Pharma</option>
+            <option>Biomedical & Robotics Engineering</option>
             {/* {branchName.sort((a, b) => a.branch.localeCompare(b.branch)).map((item) => (
               <option value={`${item.value}`}>{item.branch}</option>
             ))} */}
@@ -194,9 +226,8 @@ function Register() {
           <Form.Label>Batch*</Form.Label>
           <Form.Select required onChange={(e) => setBatch(e.target.value)}>
             <option>Select One</option>
-            {/* {batchCode.map((item) => (
-              <option value={`${item.value}`}>{item.batch}</option>
-            ))} */}
+            <option>2019</option>
+            <option>2018</option>
           </Form.Select>
         </Form.Group>
       </Row>
