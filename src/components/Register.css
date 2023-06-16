@@ -1,41 +1,21 @@
-/* .registercont{
-    display: flex;
-    flex-direction: row;
-    
-}
+ .rc1{
+  /* text-align: center; */
+    width: 40%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+ }
 
 
-.signupfirstcont{
-    height: auto;
-    width: 30%;
-    text-align: center;
-    font-weight: bold;
-    font-size: 2rem;  
-    background-color: #ffff;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    
-}
-.signupsecondcont{
-    height: 100%;
-    width: 60%;
-    text-align: center;
-    /* background-color: aqua; */
-    /* padding: 1rem 5rem 1rem 2rem;
-} */ */
-
-
-.registercont {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
   .signupfirstcont {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 2rem;
+    text-align: center;
+    padding-top: 40px;
+    color: rgb(112, 108, 231);
   }
   
   .small-container {
@@ -58,6 +38,7 @@
   
   .signupsecondcont label {
     font-weight: bold;
+    color:seagreen
   }
   
   .signupsecondcont .phone input {

@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
 import axios from 'axios';
-import { useState } from 'react';
 import './Login.css';
-import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Alert } from "react-bootstrap";
 import { useNavigate } from 'react-router';
 
 const Login = () => {
   const navigate = useNavigate();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-      const validateEmail = (e) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const validateEmail = (e) => {
     if (e.target.value) {
       const email = e.target.value;
       const atPos = email.indexOf("@");
@@ -30,81 +30,76 @@ const Login = () => {
       } else {
         e.target.classList.remove("is-valid");
         e.target.classList.add("is-invalid");
-
         document.getElementById("regSubmit").disabled = true;
       }
     }
   };
+
   async function submithandler(event) {
     event.preventDefault(); // Prevent the default form submission behavior
-  
-    // Create the request body
+
     try {
-      const {data} = await axios.post(
-      "http://localhost:3300/api/v1/alumni/signin",
-      {
-        email:email, 
-        password:password,
-        
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
+      const { data } = await axios.post(
+        "http://localhost:3300/api/v1/alumni/signin",
+        {
+          email: email,
+          password: password,
         },
-      }
-      
-    );
-    //  console.log(data);
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
       localStorage.setItem('userInfo', data.data);
-			navigate('/profile');
+      navigate('/profile');
     } catch (error) {
-      console.log(error);
+      // console.log(error.response.data.error.explanation);
+      setError(`${error.response.data.error.explanation}, StatusCode:${error.response.data.error.statusCode}`);
     }
-    
   }
-  
-  
 
   return (
     <div className='LoginCont'>
-         <div className="loginbox">
-            <h1 style={{color:'blue'}}>ALUMCONNECT</h1>
-            <Container className="small-container loginsecondcont">
-            <Form encType="multipart/form-data" onSubmit={submithandler}>
+      <div className="loginbox">
+        <h1 style={{ color: 'blue' }}>ALUMCONNECT</h1>
+        <Container className="small-container loginsecondcont">
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Form encType="multipart/form-data" onSubmit={submithandler}>
             <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label></Form.Label>
-                <Form.Control
-                  className="email"
-                  type="email"
-                  placeholder="Enter email"
-                  required
-                  onChange={(e) => validateEmail(e)}
-                /> 
-              </Form.Group>
-               <Form.Group as={Col} controlId="formGridPassword">
-                <Form.Label></Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  required
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Form.Group>
-              <Button
+              <Form.Label></Form.Label>
+              <Form.Control
+                className="email"
+                type="email"
+                placeholder="Enter email"
+                required
+                onChange={(e) => validateEmail(e)}
+              />
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Label></Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+            <Button
               className="my-5"
               variant="primary"
               type="submit"
               id="regSubmit"
-            //   disabled={!allFill()}
               style={{ width: "40%" }}
             >
               Log In
             </Button>
-            </Form>
-            </Container>
-         </div>
+          </Form>
+        </Container>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
