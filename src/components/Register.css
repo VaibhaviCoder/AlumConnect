@@ -25,7 +25,7 @@
   .signupsecondcont h1 {
     text-align: center;
     padding-bottom: 2rem;
-    color:seagreen;
+    color:rgb(158, 190, 239);
   }
   
   .signupsecondcont form {
@@ -38,7 +38,7 @@
   
   .signupsecondcont label {
     font-weight: bold;
-    color:seagreen
+    color:rgb(9, 83, 187);
   }
   
   .signupsecondcont .phone input {

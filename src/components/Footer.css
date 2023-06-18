@@ -1,0 +1,31 @@
+.footer{
+    width: 100%;
+    padding: 6rem 0;
+    background-color: #28272a;
+}
+.right{
+   box-sizing: inherit;
+   display: block;
+   margin-block-start: 1em;
+   margin-block-end: 1em;
+   margin-inline-start: 0px;
+   margin-inline-end: 0px;
+   text-align: center;
+
+}
+.title-touch{
+   color: white;
+   margin: 2rem auto;
+   max-width: 300px;
+   opacity: 0.8;
+   font-weight: 400;
+   word-break: break-word;
+   font-family: "eurostile",sans-serif;
+}
+
+
+@media screen and (max-widht:640px) {
+   .title-touch{
+       font-size: 1.5rem;
+   }
+}

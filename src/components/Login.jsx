@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './Login.css';
+import React, { useState } from "react";
+import axios from "axios";
+
+import "./Login.css";
 import { Button, Col, Container, Form, Alert } from "react-bootstrap";
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+
+  function onclickhandler(e){
+    navigate('/register')
+ }
   const validateEmail = (e) => {
     if (e.target.value) {
       const email = e.target.value;
@@ -52,20 +57,24 @@ const Login = () => {
         }
       );
 
-      localStorage.setItem('userInfo', data.data);
-      navigate('/profile');
+      localStorage.setItem("userInfo", data.data);
+      navigate("/profile");
     } catch (error) {
       // console.log(error.response.data.error.explanation);
-      setError(`${error.response.data.error.explanation}, StatusCode:${error.response.data.error.statusCode}`);
+      setError(
+        `${error.response.data.error.explanation}, StatusCode:${error.response.data.error.statusCode}`
+      );
     }
   }
 
   return (
-    <div className='LoginCont'>
+    <div className="LoginCont">
       <div className="loginbox">
-        <h1 style={{ color: 'blue' }}>ALUMCONNECT</h1>
+        <h1 style={{ color: "blue" }}>ALUMCONNECT</h1>
+        
         <Container className="small-container loginsecondcont">
           {error && <Alert variant="danger">{error}</Alert>}
+  
           <Form encType="multipart/form-data" onSubmit={submithandler}>
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label></Form.Label>
@@ -87,19 +96,29 @@ const Login = () => {
               />
             </Form.Group>
             <Button
-              className="my-5"
-              variant="primary"
-              type="submit"
-              id="regSubmit"
-              style={{ width: "40%" }}
-            >
-              Log In
-            </Button>
+            className="my-5"
+            variant="primary"
+            type="submit"
+            id="regSubmit"
+            // disabled={!allFill()}
+            style={{  marginRight:"1rem" }}
+          >
+            LOG IN
+          </Button>
+          <Button
+            className="my-5"
+            variant="outline-secondary"
+            onClick={onclickhandler}
+            // style={{ width: "40%" }}
+          >
+            SIGN UP
+          </Button>
           </Form>
+          
         </Container>
       </div>
     </div>
   );
-}
+};
 
 export default Login;

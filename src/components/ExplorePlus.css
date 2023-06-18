@@ -1,0 +1,12 @@
+.epc1{
+    /* padding-top: 7rem; */
+}
+.headerpage{
+    width: 100%;
+    height: 100vh;
+    background-image:url('../Assets/18434.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: fixed;
+
+}

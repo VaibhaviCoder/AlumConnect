@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import './Register.css'
 import { Button, Col, Container, Form, InputGroup, Row,Alert } from "react-bootstrap";
 import axios from 'axios';
@@ -276,7 +277,7 @@ function Register() {
             type="submit"
             id="regSubmit"
             // disabled={!allFill()}
-            style={{ width: "40%", marginRight:"1rem" }}
+            style={{ marginRight:"1rem" }}
           >
             Apply
           </Button>
