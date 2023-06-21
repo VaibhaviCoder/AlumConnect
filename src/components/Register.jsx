@@ -232,9 +232,10 @@ function Register() {
                 <option>Mechenical Engineering</option>
                 <option>Electrical Engineering</option>
                 <option>Civil Engineering</option>
+                <option>Electronics and Communication Engineering</option>
                 <option>Leather Technology</option>
-                <option>Pharma</option>
-                <option>Biomedical & Robotics Engineering</option>
+                <option>B. Pharmacy</option>
+                <option>Biomedical and Robotics Engineering</option>
                 {/* {branchName.sort((a, b) => a.branch.localeCompare(b.branch)).map((item) => (
               <option value={`${item.value}`}>{item.branch}</option>
             ))} */}

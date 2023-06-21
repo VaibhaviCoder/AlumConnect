@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import Explore from './components/Explore';
 import Contact from './components/Contact';
+import Branch from './components/Branch';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/profile" element={<Profile/>}></Route>
         <Route path="/explore" element={<Explore/>}></Route>
         <Route path="/contact" element={<Contact/>}></Route>
+        <Route path="/branch" element={<Branch/>}></Route>
       </Routes>
     </BrowserRouter>
     </div>

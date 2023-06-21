@@ -1,6 +1,7 @@
-.epc1{
-    /* padding-top: 7rem; */
-}
+/* .epc1{
+    padding-top: 7rem;
+
+} */
 .headerpage{
     width: 100%;
     height: 100vh;
@@ -9,4 +10,48 @@
     background-size: cover;
     background-position: fixed;
 
+}
+.ex3c1{
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    /* background-color: rgb(164, 164, 251); */
+}
+
+.ex3c3{
+    display: flex;
+    flex-direction: row;
+    /* border: 5px solid red; */
+    /* padding: auto; */
+    flex-wrap: wrap;
+    /* margin: auto; */
+    justify-content: flex-start;
+    
+}
+.b1c1{
+    padding: 20px;
+}
+
+.e2c1{
+    width: 14%;
+    background-color: rgb(164, 164, 251);
+    margin:20px;
+}
+.epc2{
+    display: flex;
+    justify-content: end;
+}
+.epc3{
+    
+    margin: 20px;
+}
+
+.epc6{
+    max-height: 200px;
+
+    overflow-y: scroll;
+}
+
+.b2c1{
+    padding-top: 10px;
 }
