@@ -34,6 +34,14 @@ const ExplorePlus = () => {
        }
      })
   };
+  const handlebatchclick = (e) => {
+    // console.log("batch in explore",batch);
+     navigate('/batch',{
+      state:{
+        batch:e.key
+      }
+     })
+  };
   const getCurrentYear = () => {
     const date = new Date();
     return date.getFullYear();
@@ -117,8 +125,8 @@ const ExplorePlus = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu className='epc6'>
-              {generateBatchOptions().map((batch) => (
-                <Dropdown.Item key={batch} >
+              {generateBatchOptions().map((batch,index) => (
+                <Dropdown.Item key={index} onClick={()=>handlebatchclick(batch)}>
                   {batch}
                 </Dropdown.Item>
               ))}

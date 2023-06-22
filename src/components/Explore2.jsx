@@ -6,7 +6,7 @@ import './ExplorePlus.css';
 
 // bootstrap box
 const Explore2 = ({name,id,graduationYear}) => {
-   
+  
     const url="https://th.bing.com/th/id/R.3c16d440b457cbd4dc498d27a77bda22?rik=SZdTmhm8N1z1aA&riu=http%3a%2f%2fstatic.dnaindia.com%2fsites%2fdefault%2ffiles%2f2015%2f06%2f11%2f345509-hrithik-hi-res-2.jpg&ehk=XYyPchigNfdEAgJ3mQ3T%2bXMjUaeVxUf27uzY9EnRpgg%3d&risl=&pid=ImgRaw&r=0";
 
     return (
