@@ -7,6 +7,7 @@ import './Profile.css'
 const Profile = () => {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
+    const [auth,setAuth]=useState(false);
     const logoutHandler = () =>{
         localStorage.removeItem('userInfo');
         navigate('/');
@@ -23,6 +24,7 @@ const Profile = () => {
                         xaccesstoken: token}
                     });
                     // console.log(data);
+                    setAuth(true);
                     setUser(data.data);
                 } else {   
                 navigate('/login');
@@ -46,7 +48,7 @@ const Profile = () => {
     return (
         <Container className="profile-container">
           <div className="profile-wrapper">
-            {checkLogin() ? (
+            {(!auth?checkLogin():auth) ? (
               <div className="profile-content">
                 <button onClick={logoutHandler} className="logout-button">
                   Log Out

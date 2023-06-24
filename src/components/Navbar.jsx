@@ -101,7 +101,7 @@ const Navbar = () => {
                     </Dropdown>
                 </li>
                 <li >
-                    <Link to="/profile">Sing In</Link>
+                    <Link to="/profile">Sign In</Link>
                 </li>
                 <li >
                     <Link to="/Contact">Contact</Link>
