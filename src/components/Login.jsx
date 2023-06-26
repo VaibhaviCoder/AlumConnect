@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {FaHome} from 'react-icons/fa'
 
 import "./Login.css";
 import { Button, Col, Container, Form, Alert } from "react-bootstrap";
@@ -10,7 +11,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-
+ function icononclickhandler(){
+    navigate('/');
+ }
   function onclickhandler(e){
     navigate('/register')
  }
@@ -69,6 +72,7 @@ const Login = () => {
 
   return (
     <div className="LoginCont">
+      <FaHome onClick={icononclickhandler} size={30} style={{ color: "black", marginRight: "2rem", position:"absolute", top:"20px", left:"40px",cursor:"pointer" }} />
       <div className="loginbox">
         <h1 style={{ color: "blue" }}>ALUMCONNECT</h1>
         

@@ -11,7 +11,7 @@
 }
 .second{ 
     padding: 0;
-    height: 87vh;
+    height: 90vh;
     background-color:navajowhite;
     background-image: url('../Assets/welcome_page.png');
     background-size: cover;
@@ -24,12 +24,12 @@
     font-weight: bold;
     height: auto;
     position: relative;
-    top:50%;
+    top:45%;
     width: 50%;
     margin-left: 10%;
     opacity: 0.8;
     padding: 1.5rem;
-    border-radius: 3%;
+    border-radius: 1.25%;
 
 }
 .homeBtn{

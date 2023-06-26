@@ -4,6 +4,9 @@ import { Container, Table } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import './Profile.css'
 
+import {FaHome} from 'react-icons/fa'
+import {BiLogOut, BiEdit} from 'react-icons/bi'
+
 const Profile = () => {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
@@ -13,6 +16,9 @@ const Profile = () => {
         navigate('/');
 
     }
+    function icononclickhandler(){
+      navigate('/');
+   }
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -47,12 +53,13 @@ const Profile = () => {
     
     return (
         <Container className="profile-container">
+          <BiEdit size={30} style={{position:"relative", left:"0"}}/>
+          <BiLogOut size={30} onClick={logoutHandler} style={{ color: "#ff69b4", marginRight: "2rem", position:"absolute", top:"20px", right:"0px",cursor:"pointer" }}/>
           <div className="profile-wrapper">
             {(!auth?checkLogin():auth) ? (
               <div className="profile-content">
-                <button onClick={logoutHandler} className="logout-button">
-                  Log Out
-                </button>
+                 
+                <FaHome onClick={icononclickhandler} size={30} style={{ color: "#ff69b4", marginRight: "2rem", position:"absolute", top:"20px", left:"20px",cursor:"pointer" }} />
                 <div className="profile-section">
                   <img
                     className="profile-image"
