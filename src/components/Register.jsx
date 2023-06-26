@@ -5,6 +5,8 @@ import { Button, Col, Container, Form, InputGroup, Row, Alert } from "react-boot
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import {FaHome} from 'react-icons/fa'
+
 
 function Register() {
   const [email, setEmail] = useState();
@@ -29,6 +31,9 @@ function Register() {
   function onclickhandler(e) {
     navigate('/profile')
   }
+  function icononclickhandler(){
+    navigate('/');
+ }
 
   const generateBatchOptions = () => {
     const currentYear = getCurrentYear();
@@ -116,9 +121,7 @@ function Register() {
       formData.append('rollNo', rollNo);
       formData.append('graduationYear', batch);
       formData.append('degreeCertificate', doc);
-      for (const value of formData.values()) {
-        console.log(value);
-      }
+      
       await axios.post("http://localhost:3300/api/v1/alumni/signup", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -135,6 +138,7 @@ function Register() {
   return (
 
     <div className='rc1'>
+      <FaHome onClick={icononclickhandler} size={30} style={{ color: "black", marginRight: "2rem", position:"absolute", top:"20px", left:"40px",cursor:"pointer" }} />
       <div className="signupfirstcont">
         ALUMCONNECT
       </div>
