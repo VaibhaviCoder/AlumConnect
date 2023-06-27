@@ -278,7 +278,7 @@ function Register() {
                 <Form.Label>Marksheet Document (less than 5 mb)*</Form.Label>
                 <Form.Control
                   type="file"
-                  name='receipt'
+                  name='degreecertificate'
                   required
                   onChange={(e) => validateFile(e)}
                 />

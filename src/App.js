@@ -25,7 +25,7 @@ function App() {
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/branch" element={<Branch/>}></Route>
         <Route path="/batch" element={<Batch/>}></Route>
-        <Route path="/pedit" element={<ProfileEdit/>}></Route>
+        <Route path="/pedit/:id" element={<ProfileEdit/>}></Route>
       </Routes>
     </BrowserRouter>
     </div>
