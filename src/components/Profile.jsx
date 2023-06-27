@@ -31,7 +31,7 @@ const Profile = () => {
                     const {data} = await axios.get('http://localhost:3300/api/v1/alumni/profile', {headers: {
                         xaccesstoken: token}
                     });
-                    const picture=await axios.get(`http://localhost:3300/api/v1/profilepic/${data.data.id}`);
+                    const picture=await axios.get(`http://localhost:3300/api/v1/profile/${data.data.id}`);
                     setPictureData(picture.data);
         
                     setAuth(true);
