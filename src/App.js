@@ -10,6 +10,7 @@ import Explore from './components/Explore';
 import Contact from './components/Contact';
 import Branch from './components/Branch';
 import Batch from './components/Batch';
+import ProfileEdit from './components/ProfileEdit';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/branch" element={<Branch/>}></Route>
         <Route path="/batch" element={<Batch/>}></Route>
+        <Route path="/pedit" element={<ProfileEdit/>}></Route>
       </Routes>
     </BrowserRouter>
     </div>
