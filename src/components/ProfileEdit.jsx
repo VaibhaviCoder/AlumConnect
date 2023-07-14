@@ -17,6 +17,7 @@ const ProfileEdit = () => {
     const [fb, setFbProfile] = useState(query.fbProfile);
     const [pimg, setpimg] = useState();
     const [error, setError] = useState(false);
+    // console.log(query);
     const navigate = useNavigate();
     async function submithandler(e) {
         e.preventDefault();
@@ -63,49 +64,57 @@ const ProfileEdit = () => {
                     <Form.Group className="mb-3" controlId="formGridCurrentDesignation">
                         <Form.Label>Current Designation</Form.Label>
                         <Form.Control
-                            placeholder={des ? des : "CEO"}
+                            placeholder= "CEO"
+                            value={des==='null'?"":des}
+                            
                             onChange={(e) => (setDesign(e.target.value))}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGridAddress">
                         <Form.Label>Address</Form.Label>
                         <Form.Control
-                            placeholder={adr ? adr : "1234 Main St"}
+                            placeholder="1234 Main St"
+                            value={adr==='null'?"":adr}
                             onChange={(e) => (setAddress(e.target.value))}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGridLinkdin">
                         <Form.Label>LinkedIn Profile</Form.Label>
                         <Form.Control
-                            placeholder={lp ? lp : "https://www.linkedin.com/in/utkarshkr09/"}
+                            placeholder="https://www.linkedin.com/in/utkarshkr09/"
+                            value={lp==='null'?"":lp}
                             onChange={(e) => (setLinkdinProfile(e.target.value))}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGridGitHub">
                         <Form.Label>GitHub Profile</Form.Label>
                         <Form.Control
-                            placeholder={gp ? gp : "https://github.com/utkarshkr-creator"}
+                            placeholder="https://github.com/utkarshkr-creator"
+                            value={gp==='null'?"":gp}
                             onChange={(e) => (setGitProfile(e.target.value))}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGridTwitter">
                         <Form.Label>Twitter Profile</Form.Label>
                         <Form.Control
-                            placeholder={tp ? tp : "https://twitter.com/utkarsh47277019"}
+                            placeholder="https://twitter.com/utkarsh47277019"
+                            value={tp==='null'?"":tp}
                             onChange={(e) => (setTwiterProfile(e.target.value))}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGridFacebook">
                         <Form.Label>Facebook Profile</Form.Label>
                         <Form.Control
-                            placeholder={fb ? fb : "https://www.facebook.com/chrishemsworth/"}
+                            placeholder= "https://www.facebook.com/chrishemsworth/"
+                            value={fb==='null'?"":fb}
                             onChange={(e) => (setFbProfile(e.target.value))}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formGridLinkdin">
                         <Form.Label>Instagram Profile</Form.Label>
                         <Form.Control
-                            placeholder={ip ? ip : "https://www.instagram.com/chrishemsworth/"}
+                            placeholder= "https://www.instagram.com/chrishemsworth/"
+                            value={ip==='null'?"":ip}
                             onChange={(e) => (setInstraProfile(e.target.value))}
                         />
                     </Form.Group>

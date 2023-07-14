@@ -93,26 +93,63 @@ const Profile = () => {
                     alt="profileimage"
                   />
                   <div className="scnc1">
-                    {ProfileData.linkdin_id &&
-                      <a href={ProfileData.linkdin_id} target='_blank' rel='noreferrer' ><FaLinkedinIn size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} /></a>
-                    }
-                    {ProfileData.twitter_id &&
-                      <a href={ProfileData.twitter_id} target='_blank' rel='noreferrer' ><FaTwitter size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} /></a>
-                    }
-                    {ProfileData.github_id &&
-                      <a href={ProfileData.github_id} target='_blank' rel='noreferrer' ><FaGithub size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} /></a>
-                    }
-                    {ProfileData.facebook_id &&
-                      <a href={ProfileData.facebook_id} target='_blank' rel='noreferrer' ><FaFacebook size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} /></a>
-                    }
-                    {ProfileData.instragram_id &&
-                      <a href={ProfileData.instragram_id} target='_blank' rel='noreferrer' ><FaInstagram size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} /></a>
-                    }
+                    {ProfileData.linkdin_id && ProfileData.linkdin_id !== 'null' ? (
+                      <a href={ProfileData.linkdin_id} target="_blank" rel="noreferrer">
+                        <FaLinkedinIn size={30} style={{ color: "rgb(11, 199, 242)" }} />
+                      </a>
+                    ) : (
+                      <span>
+                        <FaLinkedinIn size={30} style={{ color: "rgb(109, 137, 182)" }} />
+                      </span>
+                    )}
+
+                    {ProfileData.twitter_id && ProfileData.twitter_id !== 'null' ? (
+                      <a href={ProfileData.twitter_id} target="_blank" rel="noreferrer">
+                        <FaTwitter size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                      </a>
+                    ) : (
+                      <span>
+                        <FaTwitter size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                      </span>
+                    )}
+
+                    {ProfileData.github_id && ProfileData.github_id !== 'null' ? (
+                      <a href={ProfileData.github_id} target="_blank" rel="noreferrer">
+                        <FaGithub size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                      </a>
+                    ) : (
+                      <span>
+                        <FaGithub size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                      </span>
+                    )}
+
+                    {ProfileData.facebook_id && ProfileData.facebook_id !== 'null' ? (
+                      <a href={ProfileData.facebook_id} target="_blank" rel="noreferrer">
+                        <FaFacebook size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                      </a>
+                    ) : (
+                      <span>
+                        <FaFacebook size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                      </span>
+                    )}
+
+                    {ProfileData.instragram_id && ProfileData.instragram_id !== 'null' ? (
+                      <a href={ProfileData.instragram_id} target="_blank" rel="noreferrer">
+                        <FaInstagram size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                      </a>
+                    ) : (
+                      <span>
+                        <FaInstagram size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                      </span>
+                    )}
+
                   </div>
                 </div>}
               <div className="profile-details">
-                <h1 className="profile-name" style={{ marginBottom: "0px" }}>{user.name}</h1>
-                {ProfileData && ProfileData.designation && <p >{ProfileData.designation}</p>}
+                <div className="profile-heading">
+                  <h1 className="profile-name" style={{ marginBottom: "0px" }}>{user.name}</h1>
+                  {ProfileData && ProfileData.designation !== 'null' && <p >{ProfileData.designation}</p>}
+                </div>
                 {ProfileData && ProfileData.location && <h4 className="profile-info"><IoLocation size={30} style={{ color: "rgb(12, 199, 242)" }} />{ProfileData.location}</h4>}
                 <h4 className="profile-info"><i class="fa fa-envelope" aria-hidden="true" style={{ color: "rgb(11, 199, 242)" }}></i> {user.email}</h4>
                 <h4 className="profile-info"><i class="fa fa-phone-square" aria-hidden="true" style={{ color: "rgb(11, 199, 242)" }}></i> {user.phoneNumber}</h4>

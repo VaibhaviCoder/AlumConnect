@@ -69,4 +69,8 @@
      display: flex;
     flex-direction: row;
   }
+
+  .profile-heading{
+    margin: 1rem 0;
+  }
   
