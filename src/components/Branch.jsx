@@ -32,6 +32,8 @@ const Branch = () => {
         fetch();
     }, [query])
     return (
+        <>
+        <div className='header_box'> </div>
         <div className='b1c1'>
             <Button variant="light" onClick={handleclick}>Back</Button>
             <div className="b2c1">
@@ -50,6 +52,7 @@ const Branch = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

@@ -136,9 +136,11 @@ function Register() {
 
 
   return (
-
+    <>
+    <div className='header_box'> </div>
     <div className='rc1'>
-      <FaHome onClick={icononclickhandler} size={30} style={{ color: "black", marginRight: "2rem", position:"absolute", top:"20px", left:"40px",cursor:"pointer" }} />
+      
+      {/* <FaHome onClick={icononclickhandler} size={30} style={{ color: "black", marginRight: "2rem", position:"absolute", top:"20px", left:"40px",cursor:"pointer" }} /> */}
       <div className="signupfirstcont">
         ALUMCONNECT
       </div>
@@ -308,7 +310,7 @@ function Register() {
         </Container>
       )}
     </div>
-
+    </>
   )
 }
 

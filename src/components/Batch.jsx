@@ -33,6 +33,8 @@ const Batch = () => {
   }, [query]);
 
   return (
+    <>
+    <div className='header_box'> </div>
     <div className='b1c1'>
       <Button variant="secondary" onClick={handleclick}>Back</Button>
       <div className="b2c1">
@@ -57,6 +59,7 @@ const Batch = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -71,8 +71,10 @@ const Login = () => {
   }
 
   return (
+    <>
+    <div className='header_box'> </div>
     <div className="LoginCont">
-      <FaHome onClick={icononclickhandler} size={30} style={{ color: "black", marginRight: "2rem", position:"absolute", top:"20px", left:"40px",cursor:"pointer" }} />
+      {/* <FaHome onClick={icononclickhandler} size={30} style={{ color: "black", marginRight: "2rem", position:"absolute", top:"20px", left:"40px",cursor:"pointer" }} /> */}
       <div className="loginbox">
         <h1 style={{ color: "blue" }}>ALUMCONNECT</h1>
         
@@ -122,6 +124,7 @@ const Login = () => {
         </Container>
       </div>
     </div>
+    </>
   );
 };
 
