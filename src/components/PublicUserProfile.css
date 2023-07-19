@@ -1,0 +1,48 @@
+.PublicUserProfile{
+    display: flex;
+    flex-direction: column;
+}
+.pupc1{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.pupc1c1{
+    width: 100vh;
+    height: 200px;
+    background-color: bisque;
+}
+
+.pupc1c1c1{
+    position: relative;
+    top:100px;
+    left: 40px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: rgb(184, 139, 84);
+}
+
+.pupc1c1c1img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+
+.pupc1c3{
+    margin-top: 130px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.pupc1c3btn{
+    border-radius: 30px;
+    padding:2px 10px;
+    font-weight: bold;
+
+    color: rgb(118, 118, 214);
+    background-color: #ffff;
+}

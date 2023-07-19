@@ -1,7 +1,6 @@
 import React from 'react'
 import { Alert, Button } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom'
-import Footer from './Footer';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
@@ -16,7 +15,7 @@ const Branch = () => {
     const [data, setData] = useState();
     // console.log(branch);
     function handleclick(){
-        console.log("heelo");
+        // console.log("heelo");
         navigate('/explore');
     }
     useEffect(() => {
@@ -50,7 +49,6 @@ const Branch = () => {
                     ))}
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }

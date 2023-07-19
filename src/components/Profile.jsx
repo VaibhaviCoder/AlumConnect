@@ -21,9 +21,7 @@ const Profile = () => {
     navigate('/');
 
   }
-  function icononclickhandler() {
-    navigate('/');
-  }
+  
   function edithandler() {
     navigate(`/pedit/${ProfileData.id}`, {
       state: {
@@ -50,11 +48,12 @@ const Profile = () => {
               xaccesstoken: token
             }
           });
+          setUser(data.data);
           const profile = await axios.get(`http://localhost:3300/api/v1/profile/${data.data.id}`);
           setProfileData(profile.data);
           // console.log(picture.data);
           setAuth(true);
-          setUser(data.data);
+          
         } else {
           navigate('/login');
         }
@@ -76,14 +75,18 @@ const Profile = () => {
   }
 
   return (
+     <div className="profilecontainerbox">
+      <div className='header_box'> </div>
     <Container className="profile-container">
-      <BiEdit size={30} onClick={edithandler} style={{ position: "relative", left: "0", cursor: "pointer" }} />
-      <BiLogOut size={30} onClick={logoutHandler} style={{ color: "#ff69b4", marginRight: "2rem", position: "absolute", top: "20px", right: "0px", cursor: "pointer" }} />
+      
+       
+      <BiEdit size={30} onClick={edithandler} style={{ color: "#ff69b4", position: "relative", left: "0", cursor: "pointer" }} />
+      <BiLogOut size={30} onClick={logoutHandler} style={{ color: "#ff69b4", position: "relative", left: "10px", cursor: "pointer" }} />
       <div className="profile-wrapper">
         {(!auth ? checkLogin() : auth) ? (
           <div className="profile-content">
 
-            <FaHome onClick={icononclickhandler} size={30} style={{ color: "#ff69b4", marginRight: "2rem", position: "absolute", top: "20px", left: "20px", cursor: "pointer" }} />
+            {/* <FaHome onClick={icononclickhandler} size={30} style={{ color: "#ff69b4", marginRight: "2rem", position: "absolute", top: "20px", left: "20px", cursor: "pointer" }} /> */}
             <div className="profile-section">
               {ProfileData &&
                 <div className="pic1">
@@ -162,6 +165,7 @@ const Profile = () => {
         ) : null}
       </div>
     </Container>
+    </div>
   );
 
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Alert, Button } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Footer from './Footer';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Explore2 from './Explore2';
@@ -57,7 +56,6 @@ const Batch = () => {
           )}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

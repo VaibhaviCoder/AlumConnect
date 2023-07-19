@@ -90,7 +90,14 @@ const ExplorePlus = () => {
 
   return (
     <div className='epc1'>
-      <div className="headerpage"></div>
+      <div className="headerpage">
+        <div className="secondtitle">
+              
+              <h1 style={{ color:'white'}}>MIT, Muzaffarpur Alumni Community </h1>
+              <p>Welcome to our alumni community! This is your gateway to connect with us and over 10,000 former Mitian around the world</p>
+          
+          </div>
+      </div>
       <div className="epc2">
         <Dropdown className='epc3'>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -145,6 +152,7 @@ const ExplorePlus = () => {
           return <Explore3 key={index} id={index} data={data.data} branch={data.branch} />
         else return null;
       })}
+      
     </div>
   );
 }

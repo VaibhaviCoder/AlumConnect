@@ -60,7 +60,7 @@ const Navbar = () => {
     return (
         <div className={color ? "header header-bg" : "header"}>
             <Link to="/">
-                <h1>ALUMCONNECT</h1>
+                <h1>ALMACONNECT</h1>
             </Link>
             <ul className={click ? "nav-menu active" : "nav-menu fill"}>
                 <li >
@@ -100,9 +100,7 @@ const Navbar = () => {
                         </Dropdown.Menu>
                     </Dropdown>
                 </li>
-                <li >
-                    <Link to="/profile">Sign In</Link>
-                </li>
+               
                 <li >
                     <Link to="/Contact">Contact</Link>
                 </li>
