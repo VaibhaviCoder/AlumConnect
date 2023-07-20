@@ -47,17 +47,23 @@
 }
 
 .e2c1{
-    width: 14%;
+    width: 250px;
+    height: 350px;
     background-color: rgb(164, 164, 251);
     margin:20px;
     cursor: pointer;
+    
+}
+.e2c2{
+    width:100%;
+    height:100px;
+
 }
 .epc2{
     display: flex;
     justify-content: end;
 }
-.epc3{
-    
+.epc3{  
     margin: 20px;
 }
 
@@ -69,4 +75,10 @@
 
 .b2c1{
     padding-top: 10px;
+}
+
+.e2c1img{
+    width: 100%;
+    height: 250px;
+   object-fit: fill;
 }

@@ -31,9 +31,10 @@ const Explore2 = ({ name, id, graduationYear }) => {
                 variant="top"
                 src={profile ? `data:${profile.contentType};base64,${profile.data}` : url}
                 alt={name}
+                className='e2c1img'
             />
 
-            <Card.Body>
+            <Card.Body className='e2c2'>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>
                     Batch: {graduationYear}
