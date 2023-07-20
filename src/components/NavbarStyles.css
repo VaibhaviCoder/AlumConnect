@@ -18,7 +18,7 @@
 .header-bg{
      background-color: rgb(214,163,88);
      /* border-radius: 10px; */
-    transition: 0.5s;
+    transition: 0s;
 }
 .nav-menu{
     display: flex;

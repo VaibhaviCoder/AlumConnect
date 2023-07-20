@@ -40,9 +40,10 @@
 
 .pupc1c3btn{
     border-radius: 30px;
-    padding:2px 10px;
-    font-weight: bold;
+    padding:5px 10px;
+    font-size: 1.5rem;
+    border: 0;
 
-    color: rgb(118, 118, 214);
-    background-color: #ffff;
+    color: rgb(244, 240, 240);
+    background-color: #004182;
 }

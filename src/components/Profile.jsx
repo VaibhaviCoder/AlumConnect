@@ -14,14 +14,14 @@ import { IoLocation } from 'react-icons/io5'
 const Profile = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
   const [ProfileData, setProfileData] = useState();
   const logoutHandler = () => {
     localStorage.removeItem('userInfo');
     navigate('/');
 
   }
-  
+
   function edithandler() {
     navigate(`/pedit/${ProfileData.id}`, {
       state: {
@@ -35,7 +35,7 @@ const Profile = () => {
         fbProfile: ProfileData.facebook_id
       }
     })
-
+    // 
   }
   useEffect(() => {
     const fetchData = async () => {
@@ -43,17 +43,15 @@ const Profile = () => {
         if (checkLogin()) {
           // console.log("toke",localStorage.getItem('userInfo'));
           const token = localStorage.getItem('userInfo');
+
           const { data } = await axios.get('http://localhost:3300/api/v1/alumni/profile', {
             headers: {
               xaccesstoken: token
             }
-          });
+          })
+
           setUser(data.data);
-          const profile = await axios.get(`http://localhost:3300/api/v1/profile/${data.data.id}`);
-          setProfileData(profile.data);
-          // console.log(picture.data);
           setAuth(true);
-          
         } else {
           navigate('/login');
         }
@@ -66,107 +64,123 @@ const Profile = () => {
     }
     fetchData();
   }, [navigate]);
-  const checkLogin = () => {
-    if (localStorage.getItem('userInfo')) {
-      return true;
-    } else {
-      return false;
+
+ 
+    useEffect(() => {
+      const fetchProfile = async () => {
+        if (auth && user && user.id) {
+          try {
+            const profile = await axios.get(`http://localhost:3300/api/v1/profile?id=${user.id}&auth=${auth}`);
+            setProfileData(profile.data);
+          } catch (err) {
+            console.log(err);
+          }
+        }
+      };
+      fetchProfile();
+    }, [auth, user]);
+
+    const checkLogin = () => {
+      if (localStorage.getItem('userInfo')) {
+        return true;
+      } else {
+        return false;
+      }
     }
-  }
 
-  return (
-     <div className="profilecontainerbox">
-      <div className='header_box'> </div>
-    <Container className="profile-container">
-      
-       
-      <BiEdit size={30} onClick={edithandler} style={{ color: "#ff69b4", position: "relative", left: "0", cursor: "pointer" }} />
-      <BiLogOut size={30} onClick={logoutHandler} style={{ color: "#ff69b4", position: "relative", left: "10px", cursor: "pointer" }} />
-      <div className="profile-wrapper">
-        {(!auth ? checkLogin() : auth) ? (
-          <div className="profile-content">
+    return (
+      <div className="profilecontainerbox">
+        <div className='header_box'> </div>
+        <Container className="profile-container">
 
-            {/* <FaHome onClick={icononclickhandler} size={30} style={{ color: "#ff69b4", marginRight: "2rem", position: "absolute", top: "20px", left: "20px", cursor: "pointer" }} /> */}
-            <div className="profile-section">
-              {ProfileData &&
-                <div className="pic1">
-                  <img
-                    className="profile-image"
-                    src={`data:${ProfileData.contentType};base64,${ProfileData.data}`}
-                    alt="profileimage"
-                  />
-                  <div className="scnc1">
-                    {ProfileData.linkdin_id && ProfileData.linkdin_id !== 'null' ? (
-                      <a href={ProfileData.linkdin_id} target="_blank" rel="noreferrer">
-                        <FaLinkedinIn size={30} style={{ color: "rgb(11, 199, 242)" }} />
-                      </a>
-                    ) : (
-                      <span>
-                        <FaLinkedinIn size={30} style={{ color: "rgb(109, 137, 182)" }} />
-                      </span>
-                    )}
 
-                    {ProfileData.twitter_id && ProfileData.twitter_id !== 'null' ? (
-                      <a href={ProfileData.twitter_id} target="_blank" rel="noreferrer">
-                        <FaTwitter size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
-                      </a>
-                    ) : (
-                      <span>
-                        <FaTwitter size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
-                      </span>
-                    )}
+          <BiEdit size={30} onClick={edithandler} style={{ color: "#ff69b4", position: "relative", left: "0", cursor: "pointer" }} />
+          <BiLogOut size={30} onClick={logoutHandler} style={{ color: "#ff69b4", position: "relative", left: "10px", cursor: "pointer" }} />
+          <div className="profile-wrapper">
+            {(!auth ? checkLogin() : auth) ? (
+              <div className="profile-content">
 
-                    {ProfileData.github_id && ProfileData.github_id !== 'null' ? (
-                      <a href={ProfileData.github_id} target="_blank" rel="noreferrer">
-                        <FaGithub size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
-                      </a>
-                    ) : (
-                      <span>
-                        <FaGithub size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
-                      </span>
-                    )}
+                {/* <FaHome onClick={icononclickhandler} size={30} style={{ color: "#ff69b4", marginRight: "2rem", position: "absolute", top: "20px", left: "20px", cursor: "pointer" }} /> */}
+                <div className="profile-section">
+                  {ProfileData &&
+                    <div className="pic1">
+                      <img
+                        className="profile-image"
+                        src={`data:${ProfileData.contentType};base64,${ProfileData.data}`}
+                        alt="profileimage"
+                      />
+                      <div className="scnc1">
+                        {ProfileData.linkdin_id && ProfileData.linkdin_id !== 'undefined' && ProfileData.linkdin_id !== 'null' ? (
+                          <a href={ProfileData.linkdin_id} target="_blank" rel="noreferrer">
+                            <FaLinkedinIn size={30} style={{ color: "rgb(11, 199, 242)" }} />
+                          </a>
+                        ) : (
+                          <span>
+                            <FaLinkedinIn size={30} style={{ color: "rgb(109, 137, 182)" }} />
+                          </span>
+                        )}
 
-                    {ProfileData.facebook_id && ProfileData.facebook_id !== 'null' ? (
-                      <a href={ProfileData.facebook_id} target="_blank" rel="noreferrer">
-                        <FaFacebook size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
-                      </a>
-                    ) : (
-                      <span>
-                        <FaFacebook size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
-                      </span>
-                    )}
+                        {ProfileData.twitter_id && ProfileData.twitter_id !== 'undefined' && ProfileData.twitter_id !== 'null' ? (
+                          <a href={ProfileData.twitter_id} target="_blank" rel="noreferrer">
+                            <FaTwitter size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                          </a>
+                        ) : (
+                          <span>
+                            <FaTwitter size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                          </span>
+                        )}
 
-                    {ProfileData.instragram_id && ProfileData.instragram_id !== 'null' ? (
-                      <a href={ProfileData.instragram_id} target="_blank" rel="noreferrer">
-                        <FaInstagram size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
-                      </a>
-                    ) : (
-                      <span>
-                        <FaInstagram size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
-                      </span>
-                    )}
+                        {ProfileData.github_id && ProfileData.github_id !== 'undefined' && ProfileData.github_id !== 'null' ? (
+                          <a href={ProfileData.github_id} target="_blank" rel="noreferrer">
+                            <FaGithub size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                          </a>
+                        ) : (
+                          <span>
+                            <FaGithub size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                          </span>
+                        )}
 
+                        {ProfileData.facebook_id && ProfileData.facebook_id !== 'undefined' && ProfileData.facebook_id !== 'null' ? (
+                          <a href={ProfileData.facebook_id} target="_blank" rel="noreferrer">
+                            <FaFacebook size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                          </a>
+                        ) : (
+                          <span>
+                            <FaFacebook size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                          </span>
+                        )}
+
+                        {ProfileData.instragram_id && ProfileData.instragram_id !== 'undefined' && ProfileData.instragram_id !== 'null' ? (
+                          <a href={ProfileData.instragram_id} target="_blank" rel="noreferrer">
+                            <FaInstagram size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                          </a>
+                        ) : (
+                          <span>
+                            <FaInstagram size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                          </span>
+                        )}
+
+                      </div>
+                    </div>}
+                  <div className="profile-details">
+                    <div className="profile-heading">
+                      <h1 className="profile-name" style={{ marginBottom: "0px" }}>{user.name}</h1>
+                      {ProfileData && ProfileData.designation !== 'null' && <p >{ProfileData.designation}</p>}
+                    </div>
+                    {ProfileData && ProfileData.location && <h4 className="profile-info"><IoLocation size={30} style={{ color: "rgb(12, 199, 242)" }} />{ProfileData.location}</h4>}
+                    <h4 className="profile-info"><i className="fa fa-envelope" aria-hidden="true" style={{ color: "rgb(11, 199, 242)" }}></i> {user.email}</h4>
+                    <h4 className="profile-info"><i className="fa fa-phone-square" aria-hidden="true" style={{ color: "rgb(11, 199, 242)" }}></i> {user.phoneNumber}</h4>
+
+                    <h4 className="profile-info"><MdEngineering size={30} style={{ color: "rgb(11, 199, 242)" }} /> {user.branch}</h4>
+                    <h4 className="profile-info"><SlCalender size={30} style={{ color: "rgb(11, 199, 242)" }} /> {user.graduationYear}</h4>
                   </div>
-                </div>}
-              <div className="profile-details">
-                <div className="profile-heading">
-                  <h1 className="profile-name" style={{ marginBottom: "0px" }}>{user.name}</h1>
-                  {ProfileData && ProfileData.designation !== 'null' && <p >{ProfileData.designation}</p>}
                 </div>
-                {ProfileData && ProfileData.location && <h4 className="profile-info"><IoLocation size={30} style={{ color: "rgb(12, 199, 242)" }} />{ProfileData.location}</h4>}
-                <h4 className="profile-info"><i class="fa fa-envelope" aria-hidden="true" style={{ color: "rgb(11, 199, 242)" }}></i> {user.email}</h4>
-                <h4 className="profile-info"><i class="fa fa-phone-square" aria-hidden="true" style={{ color: "rgb(11, 199, 242)" }}></i> {user.phoneNumber}</h4>
-
-                <h4 className="profile-info"><MdEngineering size={30} style={{ color: "rgb(11, 199, 242)" }} /> {user.branch}</h4>
-                <h4 className="profile-info"><SlCalender size={30} style={{ color: "rgb(11, 199, 242)" }} /> {user.graduationYear}</h4>
               </div>
-            </div>
+            ) : null}
           </div>
-        ) : null}
+        </Container>
       </div>
-    </Container>
-    </div>
-  );
+    );
 
-}
+  }
 export default Profile;
