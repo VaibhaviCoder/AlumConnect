@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {FaHome} from 'react-icons/fa'
 
 import "./Login.css";
 import { Button, Col, Container, Form, Alert } from "react-bootstrap";
@@ -11,9 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
- function icononclickhandler(){
-    navigate('/');
- }
+
   function onclickhandler(e){
     navigate('/register')
  }
@@ -59,7 +56,6 @@ const Login = () => {
           },
         }
       );
-
       localStorage.setItem("userInfo", data.data);
       navigate("/profile");
     } catch (error) {

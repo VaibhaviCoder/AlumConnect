@@ -11,7 +11,8 @@
 .pupc1c1{
     width: 100vh;
     height: 200px;
-    background-color: bisque;
+    background-image: url('../Assets/welcome_page.png');
+    background-position: center;
 }
 
 .pupc1c1c1{
