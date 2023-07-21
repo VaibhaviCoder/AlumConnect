@@ -8,9 +8,9 @@ import { IoLocation } from 'react-icons/io5'
 
 const PublicUserProfile = () => {
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
- 
+
   const [data, setData] = useState();
   const [error, setError] = useState();
   const [profileData, setProfileData] = useState();
@@ -22,25 +22,38 @@ const PublicUserProfile = () => {
       return false;
     }
   }
-  function handleJoinNow(){
-     navigate('/register')
+  function handleJoinNow() {
+    navigate('/register')
   }
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (checkLogin()) {
+        if (id && checkLogin()) {
 
           // console.log("toke",localStorage.getItem('userInfo'));
           const token = localStorage.getItem('userInfo');
-          const { data } = await axios.get('http://localhost:3300/api/v1/alumni/profile', {
-            headers: {
-              xaccesstoken: token
-            }
-          })
-          setData(data.data);
-          setAuth(true);
-          const profile = await axios.get(`http://localhost:3300/api/v1/profile?id=${id}&auth=true`);
-          setProfileData(profile.data);
+          try {
+            const { response } = await axios.get('http://localhost:3300/api/v1/auth', {
+              headers: {
+                xaccesstoken: token
+              }
+            });
+            setAuth(true);
+
+          } catch (error) {
+            setError(`${error.response.data.error.explanation}, StatusCode:${error.response.data.error.statusCode}`);
+          }
+
+          try {
+            const response = await axios.get(`http://localhost:3300/api/v1/alumni/userProfile/${id}`);
+            // console.log(response.data);
+            setData(response.data.data);
+            const profile = await axios.get(`http://localhost:3300/api/v1/profile?id=${id}&auth=true`);
+            setProfileData(profile.data);
+          } catch (error) {
+            setError(`${error.response.data.error.explanation}, StatusCode:${error.response.data.error.statusCode}`);
+          }
+
 
         } else {
           const response = await axios.get(`http://localhost:3300/api/v1/alumni/userProfile/${id}`);
