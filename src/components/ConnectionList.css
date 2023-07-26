@@ -1,0 +1,28 @@
+.clc1{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    align-items: center;
+    width: 100vh;
+}
+.clc1img{
+    padding: 10px;
+    height: 100%;
+    width: 100px;
+}
+
+.clc1n1{
+    width: 80%;
+    display: flex;
+    
+    margin-left: 10px;
+    
+}
+
+.clc1btn{
+    display: flex;
+   
+    justify-content: center;
+    height: 40px;
+    width: 200px;
+}

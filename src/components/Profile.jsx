@@ -10,6 +10,7 @@ import { MdEngineering } from 'react-icons/md'
 import { SlCalender } from 'react-icons/sl'
 import { FaFacebook, FaInstagram, FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa"
 import { IoLocation } from 'react-icons/io5'
+import ConnectionList from './ConnectionList';
 
 const Profile = () => {
   const [user, setUser] = useState({});
@@ -179,6 +180,10 @@ const Profile = () => {
             ) : null}
           </div>
         </Container>
+        <div className='pc2'>
+           <ConnectionList/>
+           {/* <Explore3 key={0} /> */}
+        </div>
       </div>
     );
 

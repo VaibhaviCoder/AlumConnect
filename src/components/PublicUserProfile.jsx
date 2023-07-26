@@ -33,7 +33,7 @@ const PublicUserProfile = () => {
           // console.log("toke",localStorage.getItem('userInfo'));
           const token = localStorage.getItem('userInfo');
           try {
-            const { response } = await axios.get('http://localhost:3300/api/v1/auth', {
+            const  response  = await axios.get('http://localhost:3300/api/v1/auth', {
               headers: {
                 xaccesstoken: token
               }
@@ -41,6 +41,7 @@ const PublicUserProfile = () => {
             setAuth(true);
 
           } catch (error) {
+            localStorage.removeItem('userInfo');
             setError(`${error.response.data.error.explanation}, StatusCode:${error.response.data.error.statusCode}`);
           }
 

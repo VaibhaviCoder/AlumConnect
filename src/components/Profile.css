@@ -86,3 +86,11 @@
 .profile-heading {
   margin: 1rem 0;
 }
+
+.pc2{
+  margin: 20px auto 50px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  /* margin: auto; */
+  padding: 1rem 1rem 14px 1rem;
+}
