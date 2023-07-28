@@ -24,9 +24,9 @@ const Profile = () => {
   }
 
   function edithandler() {
+    // console.log(ProfileData);
     navigate(`/pedit/${ProfileData.id}`, {
       state: {
-        id: ProfileData.id,
         addres: ProfileData.location,
         design: ProfileData.designation,
         linkdinProfile: ProfileData.linkdin_id,

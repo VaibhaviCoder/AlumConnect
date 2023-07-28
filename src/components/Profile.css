@@ -1,9 +1,10 @@
 .profile-container {
-  margin: 50px auto auto auto;
+  margin-top: 50px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
   /* margin: auto; */
   padding: 1rem 1rem 14px 1rem;
+  width: 90%;
  
 }
 
@@ -93,4 +94,5 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
   /* margin: auto; */
   padding: 1rem 1rem 14px 1rem;
+  width: 90%;
 }

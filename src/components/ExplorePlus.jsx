@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ExplorePlus.css';
 import Explore3 from './Explore3';
 import axios from 'axios';
+import Footer from './Footer'
 import { Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
@@ -152,7 +153,7 @@ const ExplorePlus = () => {
           return <Explore3 key={index} id={index} data={data.data} branch={data.branch} />
         else return null;
       })}
-      
+      <Footer/>
     </div>
   );
 }
