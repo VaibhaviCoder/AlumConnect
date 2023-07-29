@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { IoLocation } from 'react-icons/io5'
+import { FaFacebook, FaInstagram, FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa"
+
 
 const PublicUserProfile = () => {
 
@@ -131,14 +133,64 @@ const PublicUserProfile = () => {
           {profileData && profileData.location && profileData.location !== 'null' && <h4 className="profile-info"><IoLocation size={20} style={{ color: "rgb(12, 199, 242)" }} />{profileData.location}</h4>}
           {
             auth === true ? (
-              (id !== userId.id) && connectBtnValue && <button className='pupc1c3btn' onClick={handleConnectino} disabled={connectBtnValue != 'Connect'}>{connectBtnValue}</button>
+              (id != userId.id) && connectBtnValue && <button className='pupc1c3btn' onClick={handleConnectino} disabled={connectBtnValue != 'Connect'}>{connectBtnValue}</button>
             ) : (
               <button className='pupc1c3btn' onClick={handleJoinNow}>Join to View Profile</button>
             )
           }
-
-
         </div>
+        <div className="scnc1">
+                      {profileData.linkdin_id && profileData.linkdin_id !== 'undefined' && profileData.linkdin_id !== 'null' ? (
+                        <a href={profileData.linkdin_id} target="_blank" rel="noreferrer">
+                          <FaLinkedinIn size={30} style={{ color: "rgb(11, 199, 242)" }} />
+                        </a>
+                      ) : (
+                        <span>
+                          <FaLinkedinIn size={30} style={{ color: "rgb(109, 137, 182)" }} />
+                        </span>
+                      )}
+
+                      {profileData.twitter_id && profileData.twitter_id !== 'undefined' && profileData.twitter_id !== 'null' ? (
+                        <a href={profileData.twitter_id} target="_blank" rel="noreferrer">
+                          <FaTwitter size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                        </a>
+                      ) : (
+                        <span>
+                          <FaTwitter size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                        </span>
+                      )}
+
+                      {profileData.github_id && profileData.github_id !== 'undefined' && profileData.github_id !== 'null' ? (
+                        <a href={profileData.github_id} target="_blank" rel="noreferrer">
+                          <FaGithub size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                        </a>
+                      ) : (
+                        <span>
+                          <FaGithub size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                        </span>
+                      )}
+
+                      {profileData.facebook_id && profileData.facebook_id !== 'undefined' && profileData.facebook_id !== 'null' ? (
+                        <a href={profileData.facebook_id} target="_blank" rel="noreferrer">
+                          <FaFacebook size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                        </a>
+                      ) : (
+                        <span>
+                          <FaFacebook size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                        </span>
+                      )}
+
+                      {profileData.instragram_id && profileData.instragram_id !== 'undefined' && profileData.instragram_id !== 'null' ? (
+                        <a href={profileData.instragram_id} target="_blank" rel="noreferrer">
+                          <FaInstagram size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+                        </a>
+                      ) : (
+                        <span>
+                          <FaInstagram size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+                        </span>
+                      )}
+
+                    </div>
 
       </div>
     </div>
