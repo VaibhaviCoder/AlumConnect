@@ -102,6 +102,7 @@ const Profile = () => {
             status: status,
             id: user.id
           })
+          console.log(res.data);
           setConnectionData(res.data.data);
 
         } catch (err) {
@@ -110,7 +111,7 @@ const Profile = () => {
       }
     };
     fetchConnection();
-  },[status]);
+  },[status, user, SERVER_CONFIG,auth]);
 
   const checkLogin = () => {
     if (localStorage.getItem('userInfo')) {

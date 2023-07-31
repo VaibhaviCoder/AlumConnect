@@ -140,7 +140,7 @@ const PublicUserProfile = () => {
           }
         </div>
         <div className="scnc1">
-                      {profileData.linkdin_id && profileData.linkdin_id !== 'undefined' && profileData.linkdin_id !== 'null' ? (
+                      {profileData &&  profileData.linkdin_id && profileData.linkdin_id !== 'undefined' && profileData.linkdin_id !== 'null' ? (
                         <a href={profileData.linkdin_id} target="_blank" rel="noreferrer">
                           <FaLinkedinIn size={30} style={{ color: "rgb(11, 199, 242)" }} />
                         </a>
@@ -150,7 +150,7 @@ const PublicUserProfile = () => {
                         </span>
                       )}
 
-                      {profileData.twitter_id && profileData.twitter_id !== 'undefined' && profileData.twitter_id !== 'null' ? (
+                      {profileData &&  profileData.twitter_id && profileData.twitter_id !== 'undefined' && profileData.twitter_id !== 'null' ? (
                         <a href={profileData.twitter_id} target="_blank" rel="noreferrer">
                           <FaTwitter size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
                         </a>
@@ -160,7 +160,7 @@ const PublicUserProfile = () => {
                         </span>
                       )}
 
-                      {profileData.github_id && profileData.github_id !== 'undefined' && profileData.github_id !== 'null' ? (
+                      {profileData &&  profileData.github_id && profileData.github_id !== 'undefined' && profileData.github_id !== 'null' ? (
                         <a href={profileData.github_id} target="_blank" rel="noreferrer">
                           <FaGithub size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
                         </a>
@@ -170,7 +170,7 @@ const PublicUserProfile = () => {
                         </span>
                       )}
 
-                      {profileData.facebook_id && profileData.facebook_id !== 'undefined' && profileData.facebook_id !== 'null' ? (
+                      {profileData &&  profileData.facebook_id && profileData.facebook_id !== 'undefined' && profileData.facebook_id !== 'null' ? (
                         <a href={profileData.facebook_id} target="_blank" rel="noreferrer">
                           <FaFacebook size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
                         </a>
@@ -180,7 +180,7 @@ const PublicUserProfile = () => {
                         </span>
                       )}
 
-                      {profileData.instragram_id && profileData.instragram_id !== 'undefined' && profileData.instragram_id !== 'null' ? (
+                      {profileData &&  profileData.instragram_id && profileData.instragram_id !== 'undefined' && profileData.instragram_id !== 'null' ? (
                         <a href={profileData.instragram_id} target="_blank" rel="noreferrer">
                           <FaInstagram size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
                         </a>
