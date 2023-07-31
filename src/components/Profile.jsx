@@ -102,7 +102,7 @@ const Profile = () => {
             status: status,
             id: user.id
           })
-          console.log(res.data);
+          // console.log(res.data);
           setConnectionData(res.data.data);
 
         } catch (err) {
@@ -212,7 +212,7 @@ const Profile = () => {
           ) : null}
         </div>
       </Container>
-      {ConnectionData &&
+      {ConnectionData  &&
         <div className='pc2'>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onClick={handleIconClick}/>
@@ -222,7 +222,7 @@ const Profile = () => {
           </div>
 
           {Object.keys(ConnectionData).map((key, index) => (
-            <ConnectionList key={index} connectonId={ConnectionData[index].receiver_id} />
+            <ConnectionList key={index} receiver_id={ConnectionData[index].receiver_id} sender_id={ConnectionData[index].sender_id} />
           ))}
 
           {/* <Explore3 key={0} /> */}

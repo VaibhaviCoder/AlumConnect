@@ -6,8 +6,8 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const ConnectionList = ({connectonId}) => {
-  // console.log(connectonId)
+const ConnectionList = ({receiver_id,sender_id}) => {
+  // console.log(receiver_id)
   const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
   const [oper,setOper]=useState(true);
   const [error,setError]=useState();
@@ -15,7 +15,7 @@ const ConnectionList = ({connectonId}) => {
   const [userData,setData]=useState();
   async function handleReject(){
       try {
-         axios.patch(`${SERVER_CONFIG}/api/v1/newconnection/${connectonId}`,{
+         axios.patch(`${SERVER_CONFIG}/api/v1/newconnection?receiver_id=${receiver_id}&sender_id=${sender_id}`,{
           status:'rejected'
          })
       } catch (error) {
@@ -23,13 +23,14 @@ const ConnectionList = ({connectonId}) => {
       }
       setOper(false);
   }
+
   function handleProfile(){
-    navigate(`/userProfile/${connectonId}`)
+    navigate(`/userProfile/${receiver_id}`)
   }
 
   function handleAccept(){
     try {
-      axios.patch(`${SERVER_CONFIG}/api/v1/newconnection/${connectonId}`,{
+      axios.patch(`${SERVER_CONFIG}/api/v1/newconnection?receiver_id=${receiver_id}&sender_id=${sender_id}`,{
        status:'accepted'
       })
    } catch (error) {
@@ -39,22 +40,23 @@ const ConnectionList = ({connectonId}) => {
   }
   useEffect(()=>{
         const fetchData=async ()=>{
-          const res=await axios.get(`${SERVER_CONFIG}/api/v1/alumni/userProfile/${connectonId}`);
+          const res=await axios.get(`${SERVER_CONFIG}/api/v1/alumni/userProfile/${receiver_id}`);
           // console.log(res);
           setData(res.data.data);
         }
         fetchData();
-  },[connectonId,SERVER_CONFIG])
+  },[receiver_id,SERVER_CONFIG])
 
   return (
-    <div className='clc1' onClick={handleProfile}>
+    <div className='clc1' >
         
-        {/* <img src={img1} alt={connectonId }  className='clc1img'/> */}
+        {/* <img src={img1} alt={receiver_id }  className='clc1img'/> */}
         {userData && 
         <>
         <h4 className='clc1n1'> {userData.name} </h4>
         {oper && 
         <>
+        <button className='btn btn-primary clc1btn' onClick={handleProfile}>View Profile</button>
         <button className='btn btn-primary clc1btn' onClick={handleAccept}>Accept</button>
         <button className='btn btn-outline-danger clc1btn' onClick={handleReject}>Reject</button>
         </>}
