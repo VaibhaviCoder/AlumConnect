@@ -222,7 +222,7 @@ const Profile = () => {
           </div>
 
           {Object.keys(ConnectionData).map((key, index) => (
-            <ConnectionList key={index} receiver_id={ConnectionData[index].receiver_id} sender_id={ConnectionData[index].sender_id} />
+            <ConnectionList key={index} receiver_id={ConnectionData[index].receiver_id} sender_id={ConnectionData[index].sender_id} types={status} />
           ))}
 
           {/* <Explore3 key={0} /> */}

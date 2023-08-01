@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const ConnectionList = ({receiver_id,sender_id}) => {
+const ConnectionList = ({receiver_id,sender_id, types}) => {
   // console.log(receiver_id)
   const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
   const [oper,setOper]=useState(true);
@@ -57,8 +57,8 @@ const ConnectionList = ({receiver_id,sender_id}) => {
         {oper && 
         <>
         <button className='btn btn-primary clc1btn' onClick={handleProfile}>View Profile</button>
-        <button className='btn btn-primary clc1btn' onClick={handleAccept}>Accept</button>
-        <button className='btn btn-outline-danger clc1btn' onClick={handleReject}>Reject</button>
+        {types==='pending' && <button className='btn btn-primary clc1btn' onClick={handleAccept}>Accept</button>}
+        {types==='pending' && <button className='btn btn-outline-danger clc1btn' onClick={handleReject}>Reject</button>}
         </>}
         </>}
 
