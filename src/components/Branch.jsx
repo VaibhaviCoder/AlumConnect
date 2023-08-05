@@ -11,6 +11,7 @@ const Branch = () => {
     const location = useLocation();
     const navigate=useNavigate();
     const query = location.state.branch.branch;
+    const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
     // console.log(location);
     const [data, setData] = useState();
     // console.log(branch);
@@ -21,7 +22,7 @@ const Branch = () => {
     useEffect(() => {
         const fetch = async () => {
             try {
-                const res = await axios.get(`http://localhost:3300/api/v1/alumni/branch?branch=${query}`);
+                const res = await axios.get(`${SERVER_CONFIG}/api/v1/alumni/branch?branch=${query}`);
                 setData(res.data.data);
             } catch (error) {
                 console.log(error);
@@ -30,7 +31,7 @@ const Branch = () => {
 
         }
         fetch();
-    }, [query])
+    }, [query, SERVER_CONFIG])
     return (
         <>
         <div className='header_box'> </div>

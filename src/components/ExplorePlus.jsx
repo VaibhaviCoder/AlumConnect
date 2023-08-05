@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ExplorePlus = () => {
   const navigate=useNavigate();
+  const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
   const Branch = {
     1: 'Information Technology',
     2: 'Mechenical Engineering',
@@ -64,7 +65,7 @@ const ExplorePlus = () => {
 
   async function fetchBranchData(branch) {
     try {
-      const res = await axios.get(`http://localhost:3300/api/v1/alumni/branch?branch=${branch}`);
+      const res = await axios.get(`${SERVER_CONFIG}/api/v1/alumni/branch?branch=${branch}`);
 
       return { branch, data: res.data.data };
     } catch (error) {

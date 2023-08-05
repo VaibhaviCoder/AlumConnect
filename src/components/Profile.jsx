@@ -19,6 +19,7 @@ const Profile = () => {
   const [ProfileData, setProfileData] = useState();
   const [ConnectionData, setConnectionData] = useState();
   const [status,setStatus]=useState('pending');
+  var flag=1;
   const logoutHandler = () => {
     localStorage.removeItem('userInfo');
     navigate('/');
@@ -111,7 +112,7 @@ const Profile = () => {
       }
     };
     fetchConnection();
-  },[status, user, SERVER_CONFIG,auth]);
+  },[status, user, SERVER_CONFIG,auth, flag]);
 
   const checkLogin = () => {
     if (localStorage.getItem('userInfo')) {
@@ -222,7 +223,7 @@ const Profile = () => {
           </div>
 
           {Object.keys(ConnectionData).map((key, index) => (
-            <ConnectionList key={index} receiver_id={ConnectionData[index].receiver_id} sender_id={ConnectionData[index].sender_id} types={status} />
+            <ConnectionList key={index} receiver_id={ConnectionData[index].receiver_id} sender_id={ConnectionData[index].sender_id} types={status} flag={flag}/>
           ))}
 
           {/* <Explore3 key={0} /> */}

@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="footer">
             <div className="footer-container">
                 <div className="left">
-                    <h2 className="title-touch">Living, learning, & leveling up one day at a time.</h2>
+                    <h2 className="title-touch">ALMACONNECT</h2>
 
                 </div>
                 <div className="right">
@@ -20,7 +20,7 @@ const Footer = () => {
                     </a >
 
 
-                    <a href="https://github.com/utkarshkr-creator/Some-Cool-CP-Problems"><FaGithub size={20} style={{ color: "#fff", marginRight: "2rem" }} />
+                    <a href="https://github.com/utkarshkr-creator/AlumConnect"><FaGithub size={20} style={{ color: "#fff", marginRight: "2rem" }} />
                     </a >
 
                 </div>

@@ -12,13 +12,14 @@ import axios from 'axios';
 const Explore2 = ({ name, id, graduationYear }) => {
     const [profile, setProfile] = useState();
     const navigate = useNavigate();
+    const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
     // console.log(id);
     function handleOnClick() {
         navigate(`/userProfile/${id}`)
     }
     useEffect(() => {
         const fetchData = async () => {
-            const profile = await axios.get(`http://localhost:3300/api/v1/profile?id=${id}&auth=false`);
+            const profile = await axios.get(`${SERVER_CONFIG}/api/v1/profile?id=${id}&auth=false`);
             setProfile(profile.data);
         }
         fetchData();

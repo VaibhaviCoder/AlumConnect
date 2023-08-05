@@ -55,24 +55,25 @@ const PublicUserProfile = () => {
             });
             setUserId(response.data.data);
             setAuth(true);
+            try {
+              const response = await axios.get(`${SERVER_CONFIG}/api/v1/alumni/userProfile/${id}`);
+              // console.log(response.data);
+              setData(response.data.data);
+              const profile = await axios.get(`${SERVER_CONFIG}/api/v1/profile?id=${id}&auth=true`);
+
+
+
+              setProfileData(profile.data);
+            } catch (error) {
+              setError(`${error.response.data.error.explanation}, StatusCode:${error.response.data.error.statusCode}`);
+            }
 
           } catch (error) {
             localStorage.removeItem('userInfo');
             setError(`${error.response.data.error.explanation}, StatusCode:${error.response.data.error.statusCode}`);
           }
 
-          try {
-            const response = await axios.get(`${SERVER_CONFIG}/api/v1/alumni/userProfile/${id}`);
-            // console.log(response.data);
-            setData(response.data.data);
-            const profile = await axios.get(`${SERVER_CONFIG}/api/v1/profile?id=${id}&auth=true`);
 
-
-
-            setProfileData(profile.data);
-          } catch (error) {
-            setError(`${error.response.data.error.explanation}, StatusCode:${error.response.data.error.statusCode}`);
-          }
 
 
         } else {
@@ -99,7 +100,7 @@ const PublicUserProfile = () => {
         const connectionStatus = await axios.get(`${SERVER_CONFIG}/api/v1/newconnection/${userId.id}/${id}`);
         //  console.log(connectionStatus.data.data);
         if (connectionStatus.data.data) {
-         
+
           setValue(connectionStatus.data.data.connection_status);
         }
         else {
@@ -109,7 +110,7 @@ const PublicUserProfile = () => {
       }
     }
     fetchData();
-  }, [userId])
+  }, [userId, SERVER_CONFIG, id])
 
 
 
@@ -140,57 +141,57 @@ const PublicUserProfile = () => {
           }
         </div>
         <div className="scnc1">
-                      {profileData &&  profileData.linkdin_id && profileData.linkdin_id !== 'undefined' && profileData.linkdin_id !== 'null' ? (
-                        <a href={profileData.linkdin_id} target="_blank" rel="noreferrer">
-                          <FaLinkedinIn size={30} style={{ color: "rgb(11, 199, 242)" }} />
-                        </a>
-                      ) : (
-                        <span>
-                          <FaLinkedinIn size={30} style={{ color: "rgb(109, 137, 182)" }} />
-                        </span>
-                      )}
+          {profileData && profileData.linkdin_id && profileData.linkdin_id !== 'undefined' && profileData.linkdin_id !== 'null' ? (
+            <a href={profileData.linkdin_id} target="_blank" rel="noreferrer">
+              <FaLinkedinIn size={30} style={{ color: "rgb(11, 199, 242)" }} />
+            </a>
+          ) : (
+            <span>
+              <FaLinkedinIn size={30} style={{ color: "rgb(109, 137, 182)" }} />
+            </span>
+          )}
 
-                      {profileData &&  profileData.twitter_id && profileData.twitter_id !== 'undefined' && profileData.twitter_id !== 'null' ? (
-                        <a href={profileData.twitter_id} target="_blank" rel="noreferrer">
-                          <FaTwitter size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
-                        </a>
-                      ) : (
-                        <span>
-                          <FaTwitter size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
-                        </span>
-                      )}
+          {profileData && profileData.twitter_id && profileData.twitter_id !== 'undefined' && profileData.twitter_id !== 'null' ? (
+            <a href={profileData.twitter_id} target="_blank" rel="noreferrer">
+              <FaTwitter size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+            </a>
+          ) : (
+            <span>
+              <FaTwitter size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+            </span>
+          )}
 
-                      {profileData &&  profileData.github_id && profileData.github_id !== 'undefined' && profileData.github_id !== 'null' ? (
-                        <a href={profileData.github_id} target="_blank" rel="noreferrer">
-                          <FaGithub size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
-                        </a>
-                      ) : (
-                        <span>
-                          <FaGithub size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
-                        </span>
-                      )}
+          {profileData && profileData.github_id && profileData.github_id !== 'undefined' && profileData.github_id !== 'null' ? (
+            <a href={profileData.github_id} target="_blank" rel="noreferrer">
+              <FaGithub size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+            </a>
+          ) : (
+            <span>
+              <FaGithub size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+            </span>
+          )}
 
-                      {profileData &&  profileData.facebook_id && profileData.facebook_id !== 'undefined' && profileData.facebook_id !== 'null' ? (
-                        <a href={profileData.facebook_id} target="_blank" rel="noreferrer">
-                          <FaFacebook size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
-                        </a>
-                      ) : (
-                        <span>
-                          <FaFacebook size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
-                        </span>
-                      )}
+          {profileData && profileData.facebook_id && profileData.facebook_id !== 'undefined' && profileData.facebook_id !== 'null' ? (
+            <a href={profileData.facebook_id} target="_blank" rel="noreferrer">
+              <FaFacebook size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+            </a>
+          ) : (
+            <span>
+              <FaFacebook size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+            </span>
+          )}
 
-                      {profileData &&  profileData.instragram_id && profileData.instragram_id !== 'undefined' && profileData.instragram_id !== 'null' ? (
-                        <a href={profileData.instragram_id} target="_blank" rel="noreferrer">
-                          <FaInstagram size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
-                        </a>
-                      ) : (
-                        <span>
-                          <FaInstagram size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
-                        </span>
-                      )}
+          {profileData && profileData.instragram_id && profileData.instragram_id !== 'undefined' && profileData.instragram_id !== 'null' ? (
+            <a href={profileData.instragram_id} target="_blank" rel="noreferrer">
+              <FaInstagram size={30} style={{ color: "rgb(11, 199, 242)", marginLeft: "1rem" }} />
+            </a>
+          ) : (
+            <span>
+              <FaInstagram size={30} style={{ color: "rgb(109, 137, 182)", marginLeft: "1rem" }} />
+            </span>
+          )}
 
-                    </div>
+        </div>
 
       </div>
     </div>

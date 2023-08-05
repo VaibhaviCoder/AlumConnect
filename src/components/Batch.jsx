@@ -12,6 +12,7 @@ const Batch = () => {
   const query = location.state.batch;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
 
   function handleclick() {
     navigate('/explore');
@@ -20,7 +21,7 @@ const Batch = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:3300/api/v1/alumni/batch?batch=${query}`);
+        const res = await axios.get(`${SERVER_CONFIG}/api/v1/alumni/batch?batch=${query}`);
         setData(res.data.data);
         setLoading(false);
       } catch (error) {
@@ -30,7 +31,7 @@ const Batch = () => {
     };
 
     fetchData();
-  }, [query]);
+  }, [query, SERVER_CONFIG]);
 
   return (
     <>

@@ -47,6 +47,9 @@ const ProfileEdit = () => {
         }
     }
     return (
+        <>
+        <div className='header_box'> </div>
+       
         <div className='pec1'>
             <Container className="small-container signupsecondcont">
                 {error && <Alert variant="danger">{error}</Alert>}
@@ -133,6 +136,7 @@ const ProfileEdit = () => {
                 </Form>
             </Container>
         </div>
+        </>
     )
 }
 

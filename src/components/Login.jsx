@@ -10,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
 
   function onclickhandler(e){
     navigate('/register')
@@ -45,7 +46,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:3300/api/v1/alumni/signin",
+        `${SERVER_CONFIG}/api/v1/alumni/signin`,
         {
           email: email,
           password: password,

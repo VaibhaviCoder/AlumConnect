@@ -5,7 +5,6 @@ import { Button, Col, Container, Form, InputGroup, Row, Alert } from "react-boot
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-import {FaHome} from 'react-icons/fa'
 
 
 function Register() {
@@ -22,6 +21,8 @@ function Register() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState();
 
+  const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
+
   const navigate = useNavigate();
   // Generate batch options dynamically
   const getCurrentYear = () => {
@@ -31,9 +32,7 @@ function Register() {
   function onclickhandler(e) {
     navigate('/profile')
   }
-  function icononclickhandler(){
-    navigate('/');
- }
+  
 
   const generateBatchOptions = () => {
     const currentYear = getCurrentYear();
@@ -122,7 +121,7 @@ function Register() {
       formData.append('graduationYear', batch);
       formData.append('degreeCertificate', doc);
       
-      await axios.post("http://localhost:3300/api/v1/alumni/signup", formData, {
+      await axios.post(`${SERVER_CONFIG}/api/v1/alumni/signup`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
