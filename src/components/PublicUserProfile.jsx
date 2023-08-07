@@ -98,12 +98,17 @@ const PublicUserProfile = () => {
     const fetchData = async () => {
       if (userId) {
         const connectionStatus = await axios.get(`${SERVER_CONFIG}/api/v1/newconnection/${userId.id}/${id}`);
-        //  console.log(connectionStatus.data.data);
+      
         if (connectionStatus.data.data) {
-
           setValue(connectionStatus.data.data.connection_status);
         }
         else {
+          const connectionStatus = await axios.get(`${SERVER_CONFIG}/api/v1/newconnection/${id}/${userId.id}`);
+         
+          if (connectionStatus.data.data) {
+            setValue(connectionStatus.data.data.connection_status);
+          }
+          else
           setValue('Connect');
         }
 
@@ -134,7 +139,7 @@ const PublicUserProfile = () => {
           {profileData && profileData.location && profileData.location !== 'null' && <h4 className="profile-info"><IoLocation size={20} style={{ color: "rgb(12, 199, 242)" }} />{profileData.location}</h4>}
           {
             auth === true ? (
-              (id != userId.id) && connectBtnValue && <button className='pupc1c3btn' onClick={handleConnectino} disabled={connectBtnValue != 'Connect'}>{connectBtnValue}</button>
+              (id != userId.id) && connectBtnValue && <button className='pupc1c3btn' onClick={handleConnectino} disabled={connectBtnValue !== 'Connect'}>{connectBtnValue}</button>
             ) : (
               <button className='pupc1c3btn' onClick={handleJoinNow}>Join to View Profile</button>
             )

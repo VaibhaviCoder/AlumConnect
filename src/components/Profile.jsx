@@ -98,7 +98,6 @@ const Profile = () => {
     const fetchConnection = async () => {
       if (auth && user && user.id) {
         try {
-          
           const res = await axios.put(`${SERVER_CONFIG}/api/v1/newconnection`, {
             status: status,
             id: user.id
@@ -222,7 +221,7 @@ const Profile = () => {
               </label>
           </div>
 
-          {Object.keys(ConnectionData).map((key, index) => (
+          {ConnectionData && Object.keys(ConnectionData).map((key, index) => (
             <ConnectionList key={index} receiver_id={ConnectionData[index].receiver_id} sender_id={ConnectionData[index].sender_id} types={status} flag={flag}/>
           ))}
 
