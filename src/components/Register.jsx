@@ -267,7 +267,7 @@ function Register() {
                 />
               </Form.Group>
               <Form.Group as={Col} controlId="formGridBatch">
-                <Form.Label>Batch*</Form.Label>
+                <Form.Label>Graduation Year*</Form.Label>
                 <Form.Select required onChange={(e) => setBatch(e.target.value)}>
                   <option>Select One</option>
                   {generateBatchOptions()}

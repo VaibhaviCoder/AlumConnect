@@ -136,7 +136,10 @@ const PublicUserProfile = () => {
         <div className="pupc1c3">
           {data && <h4>{data.name}</h4>}
           {profileData && profileData.designation !== 'null' && <p >{profileData.designation}</p>}
+          {data && <span>Branch:- {data.branch}</span>}
+          {data && <p>GraduationYear:- { data.graduationYear}</p>}
           {profileData && profileData.location && profileData.location !== 'null' && <h4 className="profile-info"><IoLocation size={20} style={{ color: "rgb(12, 199, 242)" }} />{profileData.location}</h4>}
+          
           {
             auth === true ? (
               (id != userId.id) && connectBtnValue && <button className='pupc1c3btn' onClick={handleConnectino} disabled={connectBtnValue !== 'Connect'}>{connectBtnValue}</button>

@@ -73,7 +73,7 @@ const Login = () => {
     <div className="LoginCont">
       {/* <FaHome onClick={icononclickhandler} size={30} style={{ color: "black", marginRight: "2rem", position:"absolute", top:"20px", left:"40px",cursor:"pointer" }} /> */}
       <div className="loginbox">
-        <h1 style={{ color: "blue" }}>ALUMCONNECT</h1>
+        <h1 style={{ color: "rgb(148, 190, 239)" }}>ALUMCONNECT</h1>
         
         <Container className="small-container loginsecondcont">
           {error && <Alert variant="danger">{error}</Alert>}
