@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { UserContext } from "../UserContext";
 import "./Login.css";
 import { Button, Col, Container, Form, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import { useContext } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
-
+  const {setLogedIn}=useContext(UserContext);
   function onclickhandler(e){
     navigate('/register')
  }
@@ -58,6 +59,7 @@ const Login = () => {
         }
       );
       localStorage.setItem("userInfo", data.data);
+      setLogedIn(true)
       navigate("/profile");
     } catch (error) {
       // console.log(error.response.data.error.explanation);

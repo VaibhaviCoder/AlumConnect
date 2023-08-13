@@ -11,13 +11,17 @@ import Batch from "./components/Batch";
 import ProfileEdit from "./components/ProfileEdit";
 import Navbar from "./components/Navbar";
 import PublicUserProfile from "./components/PublicUserProfile";
+import {UserContext} from './UserContext'
+import { useState } from "react";
 
 
 
 function App() {
+  const [isLogedIn,setLogedIn]=useState(false);
   return (
     <div className="App">
       <BrowserRouter>
+        <UserContext.Provider value={{isLogedIn,setLogedIn}}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Explore />}></Route>
@@ -30,6 +34,7 @@ function App() {
           <Route path="/userProfile/:id" element={<PublicUserProfile />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
         </Routes>
+        </UserContext.Provider>
       </BrowserRouter>
     </div>
   );

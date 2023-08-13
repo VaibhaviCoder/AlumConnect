@@ -10,6 +10,8 @@ import { SlCalender } from 'react-icons/sl'
 import { FaFacebook, FaInstagram, FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa"
 import { IoLocation } from 'react-icons/io5'
 import ConnectionList from './ConnectionList';
+import { useContext } from 'react';
+import { UserContext } from '../UserContext';
 
 const Profile = () => {
   const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
@@ -19,9 +21,11 @@ const Profile = () => {
   const [ProfileData, setProfileData] = useState();
   const [ConnectionData, setConnectionData] = useState();
   const [status,setStatus]=useState('pending');
+  const {setLogedIn}=useContext(UserContext)
   var flag=1;
   const logoutHandler = () => {
     localStorage.removeItem('userInfo');
+    setLogedIn(false)
     navigate('/');
 
   }

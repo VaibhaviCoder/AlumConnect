@@ -4,8 +4,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FaBars, FaTimes } from "react-icons/fa"
 import { Dropdown } from 'react-bootstrap'
 import axios from 'axios'
+import { UserContext } from '../UserContext'
+import { useContext } from 'react'
 <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'></link>
 const Navbar = () => {
+    const {isLogedIn}=useContext(UserContext); 
+    // console.log(isLogedIn)
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
     const [color, setColor] = useState(false);
@@ -13,27 +17,27 @@ const Navbar = () => {
     
     const SERVER_CONFIG = process.env.REACT_APP_NOT_SECRET_CODE;
     const navigate = useNavigate();
-    useEffect(()=>{
-        const checkAuth=async ()=>{
-            try {
-                if(checkLogin()){
-                    const token = localStorage.getItem('userInfo');
-                    const response = await axios.get(`${SERVER_CONFIG}/api/v1/auth`, {
-                        headers: {
-                          xaccesstoken: token
-                        }
-                    });
-                    setAuth(1);
+    // useEffect(()=>{
+    //     const checkAuth=async ()=>{
+    //         try {
+    //             if(checkLogin()){
+    //                 const token = localStorage.getItem('userInfo');
+    //                 const response = await axios.get(`${SERVER_CONFIG}/api/v1/auth`, {
+    //                     headers: {
+    //                       xaccesstoken: token
+    //                     }
+    //                 });
+    //                 setAuth(1);
 
-                }
-            } catch (error) {
-                localStorage.removeItem('userInfo');
-                console.log(error);
-            }
-        }
-        checkAuth();
+    //             }
+    //         } catch (error) {
+    //             localStorage.removeItem('userInfo');
+    //             console.log(error);
+    //         }
+    //     }
+    //     checkAuth();
 
-    },[SERVER_CONFIG]);
+    // },[SERVER_CONFIG]);
 
     const checkLogin = () => {
         if (localStorage.getItem('userInfo')) {
@@ -99,7 +103,7 @@ const Navbar = () => {
                 <li >
                     <Link to="/">Home</Link>
                 </li>
-                {auth ?<li>
+                {isLogedIn ?<li>
                     <Link to='/profile'>Profile</Link>
                 </li>:
                 <li>
